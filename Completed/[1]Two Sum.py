@@ -33,7 +33,7 @@ class Solution:
         """
         :param List[int] nums: List of integers to search
         :param int target: Target sum. Expected sum of two numbers in nums to sum to target.
-        :return: List[int]: of indices of two numbers in nums that sum to target.
+        :return: List[int]: Indices of two numbers in nums that sum to target.
         """
         numbers = {}
         for index, value in enumerate(nums):
