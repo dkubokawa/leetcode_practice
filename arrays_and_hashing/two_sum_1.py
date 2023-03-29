@@ -1,4 +1,5 @@
 """
+Leetcode 1. Two Sum
 Given an array of integers nums and an integer target, return indices of the
 two numbers such that they add up to target.
 
@@ -47,17 +48,3 @@ class Solution:
             if complement in numbers.keys():
                 return [numbers[complement], index]
             numbers[value] = index
-
-
-if __name__ == "__main__":
-    nums = [2, 7, 11, 15]
-    target = 9
-    print([0, 1], Solution().twoSum(nums, target))
-
-    nums = [2, 7, 11, 15]
-    target = 17
-    print([0, 3], Solution().twoSum(nums, target))
-
-    nums = [2, 7, 11, 15]
-    target = 18
-    print([1, 2], Solution().twoSum(nums, target))
