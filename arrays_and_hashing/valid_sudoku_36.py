@@ -52,7 +52,12 @@ from typing import List
 
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-
+        """
+        :param List[List[str]] board: 9x9 Sudoku board
+        :return: bool: True if board is valid, False otherwise
+        Time Complexity: O(3N) = O(N) since we iterate over the board 3 times
+        Space Complexity: O(3N) = O(N) since we store the rows, columns, and squares in 3 separate lists
+        """
         def is_valid_row(board):
             for row in board:
                 if not is_valid(row):
