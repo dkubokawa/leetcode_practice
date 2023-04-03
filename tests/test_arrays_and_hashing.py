@@ -6,6 +6,7 @@ from arrays_and_hashing.top_k_frequent_elements_347 import (
 from arrays_and_hashing.two_sum_1 import Solution as two_sum
 from arrays_and_hashing.valid_anagram_242 import Solution as valid_anagram
 from arrays_and_hashing.valid_sudoku_36 import Solution as valid_sudoku
+from arrays_and_hashing.longest_consecutive_sequence_128 import Solution as longest_consecutive_sequence
 
 
 def test_two_sum_simple():
@@ -103,3 +104,14 @@ def test_top_k_frequent_elements_simple():
 
 def test_top_k_frequent_elements_complex():
     assert [1, 2] == top_k_frequent_elements().topKFrequent([1, 2], 2)
+
+
+def test_longest_consecutive_sequence_simple():
+    assert 4 == longest_consecutive_sequence().longestConsecutive([100, 4, 200, 1, 3, 2])
+    assert 9 == longest_consecutive_sequence().longestConsecutive([0, 3, 7, 2, 5, 8, 4, 6, 0, 1])
+
+
+def test_longest_consecutive_sequence_complex():
+    assert 1 == longest_consecutive_sequence().longestConsecutive([1])
+    assert 0 == longest_consecutive_sequence().longestConsecutive([])
+    assert 3 == longest_consecutive_sequence().longestConsecutive([0, 1, 2, 0, 1, 2])
