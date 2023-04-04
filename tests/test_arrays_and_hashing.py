@@ -1,12 +1,17 @@
 from arrays_and_hashing.contains_duplicate_217 import Solution as contains_duplicate
 from arrays_and_hashing.group_anagrams_49 import Solution as group_anagrams
+from arrays_and_hashing.longest_consecutive_sequence_128 import (
+    Solution as longest_consecutive_sequence,
+)
+from arrays_and_hashing.product_of_array_except_self_238 import (
+    Solution as product_of_array_except_self,
+)
 from arrays_and_hashing.top_k_frequent_elements_347 import (
     Solution as top_k_frequent_elements,
 )
 from arrays_and_hashing.two_sum_1 import Solution as two_sum
 from arrays_and_hashing.valid_anagram_242 import Solution as valid_anagram
 from arrays_and_hashing.valid_sudoku_36 import Solution as valid_sudoku
-from arrays_and_hashing.longest_consecutive_sequence_128 import Solution as longest_consecutive_sequence
 
 
 def test_two_sum_simple():
@@ -107,11 +112,31 @@ def test_top_k_frequent_elements_complex():
 
 
 def test_longest_consecutive_sequence_simple():
-    assert 4 == longest_consecutive_sequence().longestConsecutive([100, 4, 200, 1, 3, 2])
-    assert 9 == longest_consecutive_sequence().longestConsecutive([0, 3, 7, 2, 5, 8, 4, 6, 0, 1])
+    assert 4 == longest_consecutive_sequence().longestConsecutive(
+        [100, 4, 200, 1, 3, 2]
+    )
+    assert 9 == longest_consecutive_sequence().longestConsecutive(
+        [0, 3, 7, 2, 5, 8, 4, 6, 0, 1]
+    )
 
 
 def test_longest_consecutive_sequence_complex():
     assert 1 == longest_consecutive_sequence().longestConsecutive([1])
     assert 0 == longest_consecutive_sequence().longestConsecutive([])
     assert 3 == longest_consecutive_sequence().longestConsecutive([0, 1, 2, 0, 1, 2])
+
+
+def test_product_of_array_except_self_simple():
+    assert [24, 12, 8, 6] == product_of_array_except_self().productExceptSelf(
+        [1, 2, 3, 4]
+    )
+    assert [0, 0, 40, 0, 0] == product_of_array_except_self().productExceptSelf(
+        [1, 2, 0, 4, 5]
+    )
+    assert [0, 0, 0, 0] == product_of_array_except_self().productExceptSelf(
+        [0, 0, 0, 0]
+    )
+    assert [0, 0, 0, 0] == product_of_array_except_self().productExceptSelf(
+        [1, 0, 3, 0]
+    )
+    assert [1, 2] == product_of_array_except_self().productExceptSelf([2, 1])
