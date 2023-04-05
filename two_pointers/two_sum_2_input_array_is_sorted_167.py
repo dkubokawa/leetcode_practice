@@ -52,6 +52,8 @@ class Solution:
             If it is greater than the target, we move the right pointer to the left.
             We keep doing this until we find the two numbers that add up to the target.
             We return the indices of the two numbers.
+        Time Complexity: O(n) since we will only iterate through the array once
+        Space Complexity: O(1) since we are not using any extra space
         """
 
         left = 0
