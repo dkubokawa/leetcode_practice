@@ -49,7 +49,6 @@ class Solution:
         Space Complexity: O(n) since we are using a list to keep track of the triplets.
         """
 
-
         if len(nums) < 2:
             return []
 
