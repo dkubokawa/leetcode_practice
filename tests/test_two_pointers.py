@@ -1,3 +1,4 @@
+from two_pointers.three_sum_15 import Solution as three_sum
 from two_pointers.two_sum_2_input_array_is_sorted_167 import Solution as two_sum_2
 from two_pointers.valid_palindrome_125 import Solution as valid_palindrome
 
@@ -25,3 +26,17 @@ def test_two_sum_2_simple():
     numbers = [-1, 0]
     target = -1
     assert [1, 2] == two_sum_2().twoSum(numbers, target)
+
+
+def test_three_sum_simple():
+    nums = [-1, 0, 1, 2, -1, -4]
+    assert [[-1, -1, 2], [-1, 0, 1]] == three_sum().threeSum(nums)
+
+    nums = [0, 1, 1]
+    assert [] == three_sum().threeSum(nums)
+
+    nums = [0, 0, 0]
+    assert [[0, 0, 0]] == three_sum().threeSum(nums)
+
+    nums = [0, 0]
+    assert [] == three_sum().threeSum(nums)
