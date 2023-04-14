@@ -1,3 +1,6 @@
+from two_pointers.container_with_most_water_11 import (
+    Solution as container_with_most_water,
+)
 from two_pointers.three_sum_15 import Solution as three_sum
 from two_pointers.two_sum_2_input_array_is_sorted_167 import Solution as two_sum_2
 from two_pointers.valid_palindrome_125 import Solution as valid_palindrome
@@ -40,3 +43,17 @@ def test_three_sum_simple():
 
     nums = [0, 0]
     assert [] == three_sum().threeSum(nums)
+
+
+def test_container_with_most_water_simple():
+    height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+    assert 49 == container_with_most_water().maxArea(height)
+
+    height = [1, 1]
+    assert 1 == container_with_most_water().maxArea(height)
+
+    height = [4, 3, 2, 1, 4]
+    assert 16 == container_with_most_water().maxArea(height)
+
+    height = [1, 2, 1]
+    assert 2 == container_with_most_water().maxArea(height)
