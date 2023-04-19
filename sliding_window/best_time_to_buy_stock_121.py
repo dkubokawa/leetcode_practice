@@ -30,20 +30,21 @@
 from typing import List
 
 
-def maxProfit(self, prices: List[int]) -> int:
-    """
-    :param prices: List[int]: the price of a given stock on the iᵗʰ day
-    :return max_profit int: the maximum profit you can achieve from this transaction
-    Time Complexity: O(n) since we are iterating through the list once
-    Space Complexity: O(1) since we are using two variables to store the min price and max profit
-    """
-    min_price = prices[0]
-    max_profit = 0
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        """
+        :param prices: List[int]: the price of a given stock on the iᵗʰ day
+        :return max_profit int: the maximum profit you can achieve from this transaction
+        Time Complexity: O(n) since we are iterating through the list once
+        Space Complexity: O(1) since we are using two variables to store the min price and max profit
+        """
+        min_price = prices[0]
+        max_profit = 0
 
-    for index, value in enumerate(prices):
-        if index == 0:
-            continue
-        profit = value - min_price
-        max_profit = max(profit, max_profit)
-        min_price = min(min_price, value)
-    return max_profit
+        for index, value in enumerate(prices):
+            if index == 0:
+                continue
+            profit = value - min_price
+            max_profit = max(profit, max_profit)
+            min_price = min(min_price, value)
+        return max_profit
