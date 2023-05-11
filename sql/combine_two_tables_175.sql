@@ -55,10 +55,10 @@ There is no address in the address table for the personId = 1 so we return null 
 addressId = 1 contains information about the address of personId = 2.
 """
 
-SELECT
+select
   P.firstName,
   P.lastName,
   A.city,
   A.state
-FROM Person P
-LEFT JOIN Address A ON A.personID = P.personID
+from Person P
+left join Address A on A.personID = P.personID
