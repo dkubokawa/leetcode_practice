@@ -1,4 +1,6 @@
 """
+LeeCode 182 (Easy): Duplicate Emails
+
 Table: Person
 +-------------+---------+
 | Column Name | Type    |

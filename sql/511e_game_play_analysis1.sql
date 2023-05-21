@@ -1,4 +1,6 @@
 """
+Leetcode 511 (Easy): Game Play Analysis I
+
 Table: Activity
 +--------------+---------+
 | Column Name  | Type    |
