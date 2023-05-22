@@ -1,4 +1,6 @@
 """
+LeetCode 196 (Easy). Delete Duplicate Emails
+
 Table: Person
 +-------------+---------+
 | Column Name | Type    |

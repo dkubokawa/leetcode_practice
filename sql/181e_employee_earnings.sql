@@ -1,4 +1,6 @@
 """
+Leetcode 181 (Easy): Employees Earning More Than Their Managers
+
 Table: Employee
 +-------------+---------+
 | Column Name | Type    |

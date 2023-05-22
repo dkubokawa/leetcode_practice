@@ -1,4 +1,6 @@
 """
+LeetCode 175 (Easy): Combine Two Tables
+
 Table: Person
 +-------------+---------+
 | Column Name | Type    |

@@ -1,4 +1,6 @@
 """
+LeetCode 577 (Easy): Employee Bonus
+
 Table: Employee
 +-------------+---------+
 | Column Name | Type    |
