@@ -60,6 +60,7 @@ class Solution:
         Time Complexity: O(3N) = O(N) since we iterate over the board 3 times
         Space Complexity: O(3N) = O(N) since we store the rows, columns, and squares in 3 separate lists
         """
+
         def is_valid_row(board):
             for row in board:
                 if not is_valid(row):
@@ -76,8 +77,8 @@ class Solution:
             for i in (0, 3, 6):
                 for j in (0, 3, 6):
                     square = []
-                    for x in range(i, i+3):
-                        for y in range(j, j+3):
+                    for x in range(i, i + 3):
+                        for y in range(j, j + 3):
                             square.append(board[x][y])
                     if not is_valid(square):
                         return False

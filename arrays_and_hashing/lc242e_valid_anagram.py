@@ -21,7 +21,6 @@ Output: false
 """
 
 
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         """
@@ -45,5 +44,3 @@ class Solution:
             if key not in characters_t or characters_s[key] != characters_t[key]:
                 return False
         return True
-        
-# leetcode submit region end(Prohibit modification and deletion)
