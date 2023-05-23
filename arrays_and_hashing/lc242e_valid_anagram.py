@@ -1,5 +1,6 @@
 """
-LeetCode 242. Valid Anagram
+LeetCode 242 (Easy): Valid Anagram
+
 Given two strings s and t, return true if t is an anagram of s, and false
 otherwise.
 
