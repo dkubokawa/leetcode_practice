@@ -42,6 +42,7 @@ The tests are generated such that there is exactly one solution.
 
 from typing import List
 
+
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         """
