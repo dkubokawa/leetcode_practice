@@ -1,4 +1,6 @@
 """
+Leetcode 1148 (Easy): Article Views I
+
 Table: Views
 +---------------+---------+
 | Column Name   | Type    |
