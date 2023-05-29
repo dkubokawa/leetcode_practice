@@ -1,5 +1,6 @@
 """
-LeetCode 217. Contains Duplicate
+LeetCode 217 (Easy): Contains Duplicate
+
 Given an integer array nums, return true if any value appears at least twice
 in the array, and return false if every element is distinct.
 
@@ -20,8 +21,6 @@ Output: true
  -10⁹ <= nums[i] <= 10⁹
 """
 
-
-# leetcode submit region begin(Prohibit modification and deletion)
 from typing import List
 
 
@@ -43,6 +42,3 @@ class Solution:
                 return True
             set_of_nums.add(num)
         return False
-
-
-# leetcode submit region end(Prohibit modification and deletion)

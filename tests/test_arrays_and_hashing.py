@@ -1,17 +1,17 @@
-from arrays_and_hashing.contains_duplicate_217 import Solution as contains_duplicate
-from arrays_and_hashing.group_anagrams_49 import Solution as group_anagrams
-from arrays_and_hashing.longest_consecutive_sequence_128 import (
+from arrays_and_hashing.lc217e_contains_duplicate import Solution as contains_duplicate
+from arrays_and_hashing.lc49m_group_anagrams import Solution as group_anagrams
+from arrays_and_hashing.lc128m_longest_consecutive_sequence import (
     Solution as longest_consecutive_sequence,
 )
-from arrays_and_hashing.product_of_array_except_self_238 import (
+from arrays_and_hashing.lc238m_product_of_array_except_self import (
     Solution as product_of_array_except_self,
 )
-from arrays_and_hashing.top_k_frequent_elements_347 import (
+from arrays_and_hashing.lc347m_top_k_frequent_elements import (
     Solution as top_k_frequent_elements,
 )
-from arrays_and_hashing.two_sum_1 import Solution as two_sum
-from arrays_and_hashing.valid_anagram_242 import Solution as valid_anagram
-from arrays_and_hashing.valid_sudoku_36 import Solution as valid_sudoku
+from arrays_and_hashing.lc1_two_sum import Solution as two_sum
+from arrays_and_hashing.lc242e_valid_anagram import Solution as valid_anagram
+from arrays_and_hashing.lc36m_valid_sudoku import Solution as valid_sudoku
 
 
 def test_two_sum_simple():
