@@ -9,7 +9,7 @@ from arrays_and_hashing.lc238m_product_of_array_except_self import (
 from arrays_and_hashing.lc347m_top_k_frequent_elements import (
     Solution as top_k_frequent_elements,
 )
-from arrays_and_hashing.lc1_two_sum import Solution as two_sum
+from arrays_and_hashing.lc1e_two_sum import Solution as two_sum
 from arrays_and_hashing.lc242e_valid_anagram import Solution as valid_anagram
 from arrays_and_hashing.lc36m_valid_sudoku import Solution as valid_sudoku
 
