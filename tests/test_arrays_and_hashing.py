@@ -1,17 +1,20 @@
-from arrays_and_hashing.lc217e_contains_duplicate import Solution as contains_duplicate
-from arrays_and_hashing.lc49m_group_anagrams import Solution as group_anagrams
 from arrays_and_hashing.lc128m_longest_consecutive_sequence import (
     Solution as longest_consecutive_sequence,
 )
+from arrays_and_hashing.lc1768e_merge_string_alternatively import (
+    Solution as merge_string,
+)
+from arrays_and_hashing.lc1_two_sum import Solution as two_sum
+from arrays_and_hashing.lc217e_contains_duplicate import Solution as contains_duplicate
 from arrays_and_hashing.lc238m_product_of_array_except_self import (
     Solution as product_of_array_except_self,
 )
+from arrays_and_hashing.lc242e_valid_anagram import Solution as valid_anagram
 from arrays_and_hashing.lc347m_top_k_frequent_elements import (
     Solution as top_k_frequent_elements,
 )
-from arrays_and_hashing.lc1_two_sum import Solution as two_sum
-from arrays_and_hashing.lc242e_valid_anagram import Solution as valid_anagram
 from arrays_and_hashing.lc36m_valid_sudoku import Solution as valid_sudoku
+from arrays_and_hashing.lc49m_group_anagrams import Solution as group_anagrams
 
 
 def test_two_sum_simple():
@@ -140,3 +143,21 @@ def test_product_of_array_except_self_simple():
         [1, 0, 3, 0]
     )
     assert [1, 2] == product_of_array_except_self().productExceptSelf([2, 1])
+
+
+def test_merge_string_alternately_simple():
+    assert "apbqcr" == merge_string().mergeAlternately("abc", "pqr")
+    assert "apbqrs" == merge_string().mergeAlternately("ab", "pqrs")
+    assert "apbqcd" == merge_string().mergeAlternately("abcd", "pq")
+    assert "apbq" == merge_string().mergeAlternately("ab", "pq")
+    assert "apb" == merge_string().mergeAlternately("ab", "p")
+    assert "ap" == merge_string().mergeAlternately("a", "p")
+    assert "a" == merge_string().mergeAlternately("a", "")
+    assert "a" == merge_string().mergeAlternately("", "a")
+    assert "" == merge_string().mergeAlternately("", "")
+    assert "a" == merge_string().mergeAlternately("a", "a")
+
+def test_merge_string_alternatively_complex():
+    assert "a" == merge_string().mergeAlternately("a", "")
+    assert "a" == merge_string().mergeAlternately("", "a")
+    assert "" == merge_string().mergeAlternately("", "")
