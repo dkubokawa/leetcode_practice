@@ -4,7 +4,7 @@ from arrays_and_hashing.lc128m_longest_consecutive_sequence import (
 from arrays_and_hashing.lc1768e_merge_string_alternatively import (
     Solution as merge_string,
 )
-from arrays_and_hashing.lc1_two_sum import Solution as two_sum
+from arrays_and_hashing.lc1e_two_sum import Solution as two_sum
 from arrays_and_hashing.lc217e_contains_duplicate import Solution as contains_duplicate
 from arrays_and_hashing.lc238m_product_of_array_except_self import (
     Solution as product_of_array_except_self,
