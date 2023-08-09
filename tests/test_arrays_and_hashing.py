@@ -155,7 +155,7 @@ def test_merge_string_alternately_simple():
     assert "a" == merge_string().mergeAlternately("a", "")
     assert "a" == merge_string().mergeAlternately("", "a")
     assert "" == merge_string().mergeAlternately("", "")
-    assert "a" == merge_string().mergeAlternately("a", "a")
+    assert "aa" == merge_string().mergeAlternately("a", "a")
 
 def test_merge_string_alternatively_complex():
     assert "a" == merge_string().mergeAlternately("a", "")
