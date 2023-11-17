@@ -1,20 +1,20 @@
-from arrays_and_hashing.lc128m_longest_consecutive_sequence import (
+from arrays_and_hashing.medium.lc128m_longest_consecutive_sequence import (
     Solution as longest_consecutive_sequence,
 )
-from arrays_and_hashing.lc1768e_merge_string_alternatively import (
+from arrays_and_hashing.medium.lc1768e_merge_string_alternatively import (
     Solution as merge_string,
 )
-from arrays_and_hashing.lc1e_two_sum import Solution as two_sum
-from arrays_and_hashing.lc217e_contains_duplicate import Solution as contains_duplicate
-from arrays_and_hashing.lc238m_product_of_array_except_self import (
+from arrays_and_hashing.easy.lc1e_two_sum import Solution as two_sum
+from arrays_and_hashing.easy.lc217e_contains_duplicate import Solution as contains_duplicate
+from arrays_and_hashing.medium.lc238m_product_of_array_except_self import (
     Solution as product_of_array_except_self,
 )
-from arrays_and_hashing.lc242e_valid_anagram import Solution as valid_anagram
-from arrays_and_hashing.lc347m_top_k_frequent_elements import (
+from arrays_and_hashing.easy.lc242e_valid_anagram import Solution as valid_anagram
+from arrays_and_hashing.medium.lc347m_top_k_frequent_elements import (
     Solution as top_k_frequent_elements,
 )
-from arrays_and_hashing.lc36m_valid_sudoku import Solution as valid_sudoku
-from arrays_and_hashing.lc49m_group_anagrams import Solution as group_anagrams
+from arrays_and_hashing.medium.lc36m_valid_sudoku import Solution as valid_sudoku
+from arrays_and_hashing.medium.lc49m_group_anagrams import Solution as group_anagrams
 
 
 def test_two_sum_simple():
