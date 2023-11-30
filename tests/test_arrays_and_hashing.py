@@ -1,3 +1,6 @@
+from arrays_and_hashing.easy.lc26e_remove_duplicates_from_sorted_array import (
+    Solution as remove_duplicates_from_sorted_array
+)
 from arrays_and_hashing.medium.lc128m_longest_consecutive_sequence import (
     Solution as longest_consecutive_sequence,
 )
@@ -161,3 +164,16 @@ def test_merge_string_alternatively_complex():
     assert "a" == merge_string().mergeAlternately("a", "")
     assert "a" == merge_string().mergeAlternately("", "a")
     assert "" == merge_string().mergeAlternately("", "")
+
+def test_remove_duplicates_from_sorted_array_simple():
+    assert 2 == remove_duplicates_from_sorted_array().removeDuplicates([1, 1, 2])
+    assert 5 == remove_duplicates_from_sorted_array().removeDuplicates(
+        [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+    )
+
+def test_remove_duplicates_from_sorted_array_complex():
+    assert 0 == remove_duplicates_from_sorted_array().removeDuplicates([])
+    assert 1 == remove_duplicates_from_sorted_array().removeDuplicates([1])
+    assert 1 == remove_duplicates_from_sorted_array().removeDuplicates([1, 1])
+    assert 1 == remove_duplicates_from_sorted_array().removeDuplicates([1, 1, 1])
+    assert 2 == remove_duplicates_from_sorted_array().removeDuplicates([1, 1, 2, 2])
