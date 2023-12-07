@@ -1,18 +1,21 @@
-from arrays_and_hashing.easy.lc26e_remove_duplicates_from_sorted_array import (
-    Solution as remove_duplicates_from_sorted_array
+from arrays_and_hashing.easy.lc1e_two_sum import Solution as two_sum
+from arrays_and_hashing.easy.lc217e_contains_duplicate import (
+    Solution as contains_duplicate,
 )
+from arrays_and_hashing.easy.lc242e_valid_anagram import Solution as valid_anagram
+from arrays_and_hashing.easy.lc26e_remove_duplicates_from_sorted_array import (
+    Solution as remove_duplicates_from_sorted_array,
+)
+from arrays_and_hashing.easy.lc27e_remove_element import Solution as remove_element
 from arrays_and_hashing.medium.lc128m_longest_consecutive_sequence import (
     Solution as longest_consecutive_sequence,
 )
 from arrays_and_hashing.medium.lc1768e_merge_string_alternatively import (
     Solution as merge_string,
 )
-from arrays_and_hashing.easy.lc1e_two_sum import Solution as two_sum
-from arrays_and_hashing.easy.lc217e_contains_duplicate import Solution as contains_duplicate
 from arrays_and_hashing.medium.lc238m_product_of_array_except_self import (
     Solution as product_of_array_except_self,
 )
-from arrays_and_hashing.easy.lc242e_valid_anagram import Solution as valid_anagram
 from arrays_and_hashing.medium.lc347m_top_k_frequent_elements import (
     Solution as top_k_frequent_elements,
 )
@@ -160,10 +163,12 @@ def test_merge_string_alternately_simple():
     assert "" == merge_string().mergeAlternately("", "")
     assert "aa" == merge_string().mergeAlternately("a", "a")
 
+
 def test_merge_string_alternatively_complex():
     assert "a" == merge_string().mergeAlternately("a", "")
     assert "a" == merge_string().mergeAlternately("", "a")
     assert "" == merge_string().mergeAlternately("", "")
+
 
 def test_remove_duplicates_from_sorted_array_simple():
     assert 2 == remove_duplicates_from_sorted_array().removeDuplicates([1, 1, 2])
@@ -171,9 +176,23 @@ def test_remove_duplicates_from_sorted_array_simple():
         [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
     )
 
+
 def test_remove_duplicates_from_sorted_array_complex():
     assert 0 == remove_duplicates_from_sorted_array().removeDuplicates([])
     assert 1 == remove_duplicates_from_sorted_array().removeDuplicates([1])
     assert 1 == remove_duplicates_from_sorted_array().removeDuplicates([1, 1])
     assert 1 == remove_duplicates_from_sorted_array().removeDuplicates([1, 1, 1])
     assert 2 == remove_duplicates_from_sorted_array().removeDuplicates([1, 1, 2, 2])
+
+
+def test_remove_element_simple():
+    assert 2 == remove_element().removeElement([3, 2, 2, 3], 3)
+    assert 5 == remove_element().removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
+
+
+def test_remove_element_complex():
+    assert 0 == remove_element().removeElement([], 0)
+    assert 0 == remove_element().removeElement([1], 1)
+    assert 1 == remove_element().removeElement([1], 0)
+    assert 0 == remove_element().removeElement([1, 1], 1)
+    assert 0 == remove_element().removeElement([1, 1, 1], 1)
