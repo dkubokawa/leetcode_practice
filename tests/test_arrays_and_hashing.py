@@ -18,6 +18,7 @@ from arrays_and_hashing.medium.lc347m_top_k_frequent_elements import (
 )
 from arrays_and_hashing.medium.lc36m_valid_sudoku import Solution as valid_sudoku
 from arrays_and_hashing.medium.lc49m_group_anagrams import Solution as group_anagrams
+from arrays_and_hashing.easy.lc58e_length_of_last_word import Solution as length_of_last_word
 
 
 def test_two_sum_simple():
@@ -177,3 +178,14 @@ def test_remove_duplicates_from_sorted_array_complex():
     assert 1 == remove_duplicates_from_sorted_array().removeDuplicates([1, 1])
     assert 1 == remove_duplicates_from_sorted_array().removeDuplicates([1, 1, 1])
     assert 2 == remove_duplicates_from_sorted_array().removeDuplicates([1, 1, 2, 2])
+
+
+def test_length_of_last_word_simple():
+    assert 5 == length_of_last_word().lengthOfLastWord("Hello World")
+    assert 4 == length_of_last_word().lengthOfLastWord("   fly me   to   the moon  ")
+    assert 6 == length_of_last_word().lengthOfLastWord("luffy is still joyboy")
+
+
+def test_length_of_last_word_complex():
+    assert 1 == length_of_last_word().lengthOfLastWord("a")
+    assert 1 == length_of_last_word().lengthOfLastWord("a ")
