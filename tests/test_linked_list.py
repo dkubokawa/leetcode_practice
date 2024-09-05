@@ -1,5 +1,6 @@
 from linked_list.easy.lc141e_linked_list_cycle import Solution as linked_list_cycle
 from linked_list.easy.lc141e_linked_list_cycle import ListNode
+from linked_list.easy.lc21e_merge_two_lists import Solution as merge_two_lists
 
 def test_linked_list_cycle_simple():
     # Input: head = [3,2,0,-4], pos = 1, expect True
@@ -23,3 +24,17 @@ def test_linked_list_cycle_edge_cases():
     node5.next = node6
     node6.next = node5
     assert (True, linked_list_cycle().hasCycle(node5))
+
+def test_merge_two_lists_simple():
+    node1 = ListNode(1)
+    node2 = ListNode(2)
+    node3 = ListNode(3)
+    node4 = ListNode(4)
+    node1.next = node3
+    node2.next = node4
+    merge = merge_two_lists().mergeTwoLists(node1, node2)
+    result = []
+    while merge is not None:
+        result.append(merge.val)
+        merge = merge.next
+    assert [1,2,3,4] == result
