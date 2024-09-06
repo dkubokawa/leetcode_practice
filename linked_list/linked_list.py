@@ -1,14 +1,14 @@
 from typing import Optional
 
 
-class Node:
+class ListNode:
     def __init__(self, value: int):
         self.value = value
         self.next = None
 
 class LinkedList:
     def __init__(self, value: int):
-        new_node = Node(value)
+        new_node = ListNode(value)
         self.head = new_node 
         self.tail = new_node
         self.length = 1
@@ -20,7 +20,7 @@ class LinkedList:
             temp = temp.next
     
     def append(self, value: int):
-        new_node = Node(value)
+        new_node = ListNode(value)
         if self.length == 0:
             self.head = new_node
             self.tail = new_node
@@ -29,7 +29,7 @@ class LinkedList:
             self.tail = new_node
         self.length += 1
 
-    def pop(self) -> Optional[Node]:
+    def pop(self) -> Optional[ListNode]:
         if self.length == 0:
             return None
         if self.length == 1:

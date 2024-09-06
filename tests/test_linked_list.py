@@ -1,5 +1,6 @@
+from linked_list.linked_list import LinkedList
+from linked_list.linked_list import ListNode
 from linked_list.easy.lc141e_linked_list_cycle import Solution as linked_list_cycle
-from linked_list.easy.lc141e_linked_list_cycle import ListNode
 from linked_list.easy.lc21e_merge_two_lists import Solution as merge_two_lists
 
 def test_linked_list_cycle_simple():
