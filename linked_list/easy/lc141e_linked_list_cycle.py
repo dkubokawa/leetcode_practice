@@ -27,6 +27,15 @@ class ListNode:
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
+        """
+        :param head: The head of the ListNode
+        :return: bool: Returns if the Nodes form a cycle
+
+        Implementation: Use two pointers a slow and a fast pointer. We exit if we reach the end, which indicates
+            that we do not have a cycle. Or when slow=fast, which can only occur if we have a cycle.
+        Time Complexity: O(n) since we may iterate over the full list (if no cycle occurs)
+        Space Complexity:  O(1) since we are using no additional memory
+        """
         slow = head
         fast = head
         while fast and fast.next:
