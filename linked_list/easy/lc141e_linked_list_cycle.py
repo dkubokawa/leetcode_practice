@@ -18,12 +18,8 @@ Output: true
 Explanation: There is a cycle in the linked list, where the tail connects to the 0th node.
 """
 
-from typing import Optional, List
-
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+from typing import Optional
+from linked_list.linked_list import ListNode
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
