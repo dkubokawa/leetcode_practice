@@ -1,9 +1,9 @@
-from python.two_pointers.medium import (
+from two_pointers.medium.lc11m_container_with_most_water import (
     Solution as container_with_most_water,
 )
-from python.two_pointers.medium.lc15m_three_sum import Solution as three_sum
-from python.two_pointers.medium.lc167m_two_sum_2_input_array_is_sorted import Solution as two_sum_2
-from python.two_pointers.easy.lc125e_valid_palindrome import Solution as valid_palindrome
+from two_pointers.medium.lc15m_three_sum import Solution as three_sum
+from two_pointers.medium.lc167m_two_sum_2_input_array_is_sorted import Solution as two_sum_2
+from two_pointers.easy.lc125e_valid_palindrome import Solution as valid_palindrome
 
 
 def test_valid_palindrome_simple():
