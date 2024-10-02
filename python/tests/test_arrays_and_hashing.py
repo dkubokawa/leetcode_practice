@@ -1,24 +1,24 @@
-from arrays_and_hashing.easy.lc26e_remove_duplicates_from_sorted_array import (
+from python.arrays_and_hashing import (
     Solution as remove_duplicates_from_sorted_array
 )
-from arrays_and_hashing.medium.lc128m_longest_consecutive_sequence import (
+from python.arrays_and_hashing.medium.lc128m_longest_consecutive_sequence import (
     Solution as longest_consecutive_sequence,
 )
-from arrays_and_hashing.medium.lc1768e_merge_string_alternatively import (
+from python.arrays_and_hashing.medium.lc1768e_merge_string_alternatively import (
     Solution as merge_string,
 )
-from arrays_and_hashing.easy.lc1e_two_sum import Solution as two_sum
-from arrays_and_hashing.easy.lc217e_contains_duplicate import Solution as contains_duplicate
-from arrays_and_hashing.medium.lc238m_product_of_array_except_self import (
+from python.arrays_and_hashing.easy.lc1e_two_sum import Solution as two_sum
+from python.arrays_and_hashing import Solution as contains_duplicate
+from python.arrays_and_hashing.medium.lc238m_product_of_array_except_self import (
     Solution as product_of_array_except_self,
 )
-from arrays_and_hashing.easy.lc242e_valid_anagram import Solution as valid_anagram
-from arrays_and_hashing.medium.lc347m_top_k_frequent_elements import (
+from python.arrays_and_hashing import Solution as valid_anagram
+from python.arrays_and_hashing.medium.lc347m_top_k_frequent_elements import (
     Solution as top_k_frequent_elements,
 )
-from arrays_and_hashing.medium.lc36m_valid_sudoku import Solution as valid_sudoku
-from arrays_and_hashing.medium.lc49m_group_anagrams import Solution as group_anagrams
-from arrays_and_hashing.easy.lc58e_length_of_last_word import Solution as length_of_last_word
+from python.arrays_and_hashing.medium.lc36m_valid_sudoku import Solution as valid_sudoku
+from python.arrays_and_hashing import Solution as group_anagrams
+from python.arrays_and_hashing.easy.lc58e_length_of_last_word import Solution as length_of_last_word
 
 
 def test_two_sum_simple():
