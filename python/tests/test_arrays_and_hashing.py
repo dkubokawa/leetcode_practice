@@ -1,24 +1,24 @@
-from python.arrays_and_hashing import (
+from python.arrays_and_hashing.easy.lc1e_two_sum import Solution as two_sum
+from python.arrays_and_hashing.easy.lc217e_contains_duplicate import Solution as contains_duplicate
+from python.arrays_and_hashing.easy.lc242e_valid_anagram import Solution as valid_anagram
+from python.arrays_and_hashing.easy.lc26e_remove_duplicates_from_sorted_array import (
     Solution as remove_duplicates_from_sorted_array
 )
+from python.arrays_and_hashing.easy.lc58e_length_of_last_word import Solution as length_of_last_word
 from python.arrays_and_hashing.medium.lc128m_longest_consecutive_sequence import (
     Solution as longest_consecutive_sequence,
 )
 from python.arrays_and_hashing.medium.lc1768e_merge_string_alternatively import (
     Solution as merge_string,
 )
-from python.arrays_and_hashing.easy.lc1e_two_sum import Solution as two_sum
-from python.arrays_and_hashing import Solution as contains_duplicate
 from python.arrays_and_hashing.medium.lc238m_product_of_array_except_self import (
     Solution as product_of_array_except_self,
 )
-from python.arrays_and_hashing import Solution as valid_anagram
 from python.arrays_and_hashing.medium.lc347m_top_k_frequent_elements import (
     Solution as top_k_frequent_elements,
 )
 from python.arrays_and_hashing.medium.lc36m_valid_sudoku import Solution as valid_sudoku
-from python.arrays_and_hashing import Solution as group_anagrams
-from python.arrays_and_hashing.easy.lc58e_length_of_last_word import Solution as length_of_last_word
+from python.arrays_and_hashing.medium.lc49m_group_anagrams import Solution as group_anagrams
 
 
 def test_two_sum_simple():
@@ -161,16 +161,19 @@ def test_merge_string_alternately_simple():
     assert "" == merge_string().mergeAlternately("", "")
     assert "aa" == merge_string().mergeAlternately("a", "a")
 
+
 def test_merge_string_alternatively_complex():
     assert "a" == merge_string().mergeAlternately("a", "")
     assert "a" == merge_string().mergeAlternately("", "a")
     assert "" == merge_string().mergeAlternately("", "")
+
 
 def test_remove_duplicates_from_sorted_array_simple():
     assert 2 == remove_duplicates_from_sorted_array().removeDuplicates([1, 1, 2])
     assert 5 == remove_duplicates_from_sorted_array().removeDuplicates(
         [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
     )
+
 
 def test_remove_duplicates_from_sorted_array_complex():
     assert 0 == remove_duplicates_from_sorted_array().removeDuplicates([])
