@@ -1,4 +1,4 @@
-from python.two_pointers.medium import (
+from python.two_pointers.medium.lc11m_container_with_most_water import (
     Solution as container_with_most_water,
 )
 from python.two_pointers.medium.lc15m_three_sum import Solution as three_sum
