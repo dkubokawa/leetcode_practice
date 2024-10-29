@@ -38,7 +38,7 @@ class Solution:
         return f(n)
 
     def fib3(self, n: int) -> int:
-        # Solution 3: Bottom-Up (Tabulation) DP Approach
+        # Solution 3: Bottom-Up Tabulation Approach (DP)
         # Create an array where we fill an array/table
         # [0 1 1 2 3 5 8 13] <- vals
         # [0 1 2 3 4 5 6 7 ] <- indices
@@ -55,7 +55,7 @@ class Solution:
         return dp[n]
 
     def fib4(self, n: int) -> int:
-        # Solution 4: Bottom-Up DP with better space
+        # Solution 4: Bottom-Up Tabulation (DP) with better space
         # Time: O(n), Space: O(1)
         if n == 0: return 0
         if n == 1: return 1
