@@ -1,6 +1,9 @@
 class Solution:
     def fib0(self, n: int) -> int:
         # Initial attempt, without looking at solutions, using a generic loop
+        # Time: O(n) because of the for-loop
+        # Space: O(1) because of constant time
+        # Notes: close to optimal, used extra space for the tmp var.
         if n == 0 or n == 1:
             return n
         first_num = 0
@@ -13,11 +16,14 @@ class Solution:
 
     def fib1(self, n: int) -> int:
         # Solution 1: Recursive approach
+        # Time: O(2^n)
+        # Space: O(n) because of the recursive call-stack
         if n == 0:
             return 0
         if n == 1:
             return 1
         return self.fib(n-2) + self.fib(n-1)
+
     def fib2(self, n: int) -> int:
         # Solution 2: Top-Down Memoization Approach (DP)
         # Time: O(n), Space: O(n)
