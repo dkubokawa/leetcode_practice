@@ -10,6 +10,8 @@ class TreeNode:
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         # Recursive Solution
+        # Time-Complexity: O(n)
+        # Space-Complexity: O(1)
         if not root:
             return None
         root.left, root.right = root.right, root.left
@@ -19,6 +21,8 @@ class Solution:
 
     def invertTreeBFS(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         # BFS use deque or queue
+        # Time-Complexity: O(n)
+        # Space-Complexity: O(n)
         queue = collections.deque([root])
         while queue:
             node = queue.popleft()
@@ -30,6 +34,8 @@ class Solution:
 
     def invertTreeDFS(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         # Use a Stack for DFS
+        # Time-Complexity: O(n)
+        # Space-Complexity: O(n)
         stack = [root]
         while stack:
             node = stack.pop()
