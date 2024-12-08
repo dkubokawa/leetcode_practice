@@ -550,6 +550,7 @@ Output: [1,2]
 
 ##### Solution 2: Bucket Sort: O(n)
 * Instead of a List that we need to sort, use bucket sort and build a List of Lists ahead of time
+* Note: this form: freq = [[] for i in range(len(nums) + 1)] since we are creating a list of lists
 * We know that at most we will have len(nums) + 1 indices, since the 0 index will be unused. If all the same number, we would have cnt of = n, where n is the length of the list.
 * Finally, we build a results array. We pop off the end of the list, since we are sorted in increasing order, so the most frequent are at the top of the list
 ```python
@@ -567,6 +568,7 @@ Output: [1,2]
             freq[cnt].append(num)
         
         results = []
+        # Our stop can be end=0 (or index 1) since we will not have values in index 0
         for i in range(len(freq) - 1, 0, -1):
             # We skip over the empty indices, since we will not evaluate a num for an empty list
             for num in freq[i]:
