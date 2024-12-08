@@ -15,7 +15,7 @@
 * [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements)
 
 
-## Solution/Problem Notes
+## LC Easy - Solution and Notes
 ### [001. Two Sum](https://leetcode.com/problems/two-sum)
 #### Description
 <!-- description:start -->
@@ -254,3 +254,5 @@ class Solution:
             return_list.append(candy + extraCandies >= max_amt)
         return return_list
 ```
+
+## LC Medium - Solution and Notes
