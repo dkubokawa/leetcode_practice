@@ -256,3 +256,321 @@ class Solution:
 ```
 
 ## LC Medium - Solution and Notes
+### [036. Valid Sudoku](https://leetcode.com/problems/valid-sudoku)
+#### Description
+<!-- description:start -->
+Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+* Each row must contain the digits 1-9 without repetition. 
+* Each column must contain the digits 1-9 without repetition. 
+* Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+Note:
+* A Sudoku board (partially filled) could be valid but is not necessarily solvable. 
+* Only the filled cells need to be validated according to the mentioned rules.
+<!-- description:end -->
+
+#### Tags
+Array, Hash-Table, Matrix
+
+#### Example: 
+Input: board = 
+[["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]
+Output: true
+
+#### Approach
+##### Solution 1: OOP problem: O(N)
+* Treat as an object orientated programming problem and define methods to check all the validation conditions 
+* A valid Sudoku board has all valid_rows, valid_cols, and valid_squares
+```python
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        def is_valid(values: List[str]) -> bool:
+            nums = []
+            for v in values:
+                if v != '.':
+                    nums.append(v)
+            return len(nums) == len(set(nums))
+
+        def is_valid_row(board):
+            for r in board:
+                if not is_valid(r):
+                    return False
+            return True
+        
+        def is_valid_col(board) -> bool:
+            for c in zip(*board):
+                if not is_valid(c):
+                    return False
+            return True
+
+        def is_valid_square(board) -> bool:
+            corners = (0, 3, 6)
+            for row_index in corners:
+                for col_index in corners:
+                    square = []
+                    for i in range(row_index, row_index + 3):
+                        for j in range(col_index, col_index + 3):
+                            square.append(board[i][j])
+                    if not is_valid(square):
+                        return False
+            return True
+
+        def is_valid_sudoku(board) -> bool:
+            if is_valid_row(board) and is_valid_col(board) and is_valid_square(board):
+                return True
+            return False
+
+        return is_valid_sudoku(board)
+```
+
+### [049. Group Anagrams](https://leetcode.com/problems/group-anagrams)
+#### Description
+<!-- description:start -->
+Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+<!-- description:end -->
+
+#### Tags
+Array, Hash Table, Matrix
+
+#### Example: 
+Input: strs = ["eat","tea","tan","ate","nat","bat"]
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+Explanation:
+* There is no string in strs that can be rearranged to form "bat". 
+* The strings "nat" and "tan" are anagrams as they can be rearranged to form each other. 
+* The strings "ate", "eat", and "tea" are anagrams as they can be rearranged to form each other.
+
+#### Approach
+##### Solution 1: Hashmap: O(N)
+* Traverse the string array, sort each string in character dictionary order to get a new string.
+* Use the new string as key and [str] as value, and store them in the hash table
+* When encountering the same key during subsequent traversal, add it to the corresponding to the list.
+```python
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        # Time-Complexity: O(m*nlogn) because sorting is nlogn times m-strings
+        # Space-Complexity: O(m*n) because we use O(n) for the dict
+        anagrams = collections.defaultdict(list)
+        for s in strs:
+            sorted_s = "".join(sorted(s))
+            anagrams[sorted_s].append(s)
+        return list(anagrams.values())
+```
+
+### [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence)
+#### Description
+<!-- description:start -->
+Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+You must write an algorithm that runs in O(n) time.
+<!-- description:end -->
+
+#### Tags
+Union Find, Array, Hash Table
+
+#### Example: 
+Input: nums = [100,4,200,1,3,2]
+Output: 4
+Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Thus, the length is 4.
+
+#### Approach
+##### Solution 1: Brute-Force: O(N^2)
+* Create a set out of the input list, which removes the duplicates 
+* Iterate over every number in the hashset. For the start of each number, use a while loop to scan the entire array looking for the next integer
+* Keep a streak variable that keeps the current streak we are on
+```python
+    def longestConsecutive(self, nums: List[int]) -> int:
+        # Time-Complexity: O(n^2) because w.c. scan twice i.e. [1, 2, ..., n]
+        # Space-Complexity: O(n) because length of n for the set
+        nums_set = set(nums)
+        result = 0
+        for n in nums:
+            curr = n
+            streak = 0
+            while curr in nums_set:
+                streak += 1
+                curr += 1
+            result = max(streak, result)
+        return result
+```
+
+##### Solution 2: Hash Set: O(N)
+* Same setup as the brute-force method, but do not double scan the set.
+* We check that the previous number is not in the hashset, since if the previous number is in the hashset, that would have a greater streak than the current number
+```python
+    def longestConsecutive(self, nums: List[int]) -> int:
+        # Time-Complexity: O(2N) = O(N) because we visit each number at most twice
+        #   This would be for [1, 2, ..., n] we visit once in the for loop, once in the while loop
+        #   But it is not O(N^2) since we exit if we find the prev in the set (i.e. we saw it already!)
+        # Space-Complexity: O(n) because length of n for the set
+        # The optimization is to check the previous number, since we DO not want to recount
+        nums_set = set(nums)
+        result = 0
+        for n in nums:
+            if n - 1 not in nums_set:
+                streak = 0
+                while n + streak in nums_set:
+                    streak += 1
+                result = max(streak, result)
+        return result
+```
+
+### [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self)
+#### Description
+<!-- description:start -->
+Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+You must write an algorithm that runs in O(n) time and without using the division operation.
+<!-- description:end -->
+
+#### Tags
+Array, Prefix Sum
+
+#### Example: 
+Input: nums = [1,2,3,4]
+Output: [24,12,8,6]
+
+#### Approach
+##### Solution 1: Brute-Force: O(N^2)
+* Brute Force, so use two for loops to iterate over all the possible values.
+* We skip if the indices are the same, since we are looking for product except for self
+```python
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        # Time-Complexity: O(n^2) because we loop twice
+        # Space-Complexity: O(n) because we store n-results in a List
+        results = []
+        for i in range(len(nums)):
+            product = 1
+            for j in range(len(nums)):
+                if i == j:
+                    continue
+                product = product * nums[j]
+            results.append(product)
+        return results
+```
+
+##### Solution 2: With Division: O(N)
+* Fails the constraint if we cannot use division
+* On the first-pass, we keep track of the product of all values (except for zeros) and the amount of zeros in the array
+* We can return early if there are more than 1 zero, since the entire array will always be all zeros for > 1
+* If there is exactly one zero in the array, we handle that case, since at the index of the zero, it will be the product. But 0 everywhere else.
+```python
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        # Time-Complexity: O(n + n) = O(2n) = O(n)
+        # Space-Complexity: O(n) since we store a results array of length n
+        product = 1
+        num_of_zeroes = 0
+        for index, value in enumerate(nums):
+            if value == 0:
+                num_of_zeroes = num_of_zeroes + 1
+            else:
+                product = product * value
+        if num_of_zeroes > 1:
+            return [0] * len(nums)
+        
+        results = [0] * len(nums)
+        for index, value in enumerate(nums):
+            if num_of_zeroes == 1:
+                if value == 0:
+                    results[index] = product
+                else:
+                    results[index] = 0
+            else:
+                results[index] = product // value
+        return results
+```
+
+##### Solution 3: Prefix Sum: O(N)
+* We define two variables prefix and postfix , which represent the product of all elements to the left and right of the current element respectively. 
+* Initially, prefix = postfix = 1. We also keep an results array of length n.
+* We first traverse the array from left to right, for the i-th element we update results[i] with prefix, then update prefix for the next number by multiplying it by the current number.
+* Then, we traverse the array from right to left, for the i-th element, we update results[i] to results[i] * postifx, then update postfix by multiplying by the current number.
+* After the traversal, the array results is the answer.
+```python
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        # Time-Complexity: O(n+n) = O(2n) = O(n)
+        # Space-Complexity: O(n) since we keep a results array
+        n = len(nums)
+        results = [0] * n
+        prefix = postfix = 1
+        for i, x in enumerate(nums):
+            results[i] = prefix
+            prefix = prefix * x
+        for i in range(n - 1, -1, -1):
+            results[i] = results[i] * postfix
+            postfix = postfix * nums[i]
+        return results
+```
+
+### [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements)
+#### Description
+<!-- description:start -->
+Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+<!-- description:end -->
+
+#### Tags
+Array, Hash Table, Divide and Conquer, Bucket Sort, Counting, Quick Sort, Heap (Priority Queue)
+
+#### Example: 
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
+
+#### Approach
+##### Solution 1: Sorting: O(nlogn)
+* First use a hashmap to get the frequencies/counts of each number. Alt: use collections.Counter() 
+* We then build a List[cnt, num] to make it easier to sort. Alt: could use a lambda function
+* Finally, we build a results array. We pop off the end of the list, since we are sorted in increasing order, so the most frequent are at the top of the list
+```python
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        # Time-Complexity: O(n + n + nlogn + n) = O(3n + nlogn) = O(nlogn)
+        # Space-Complexity: O(n + n + n) = O(3n) = O(n)
+
+        nums_map: Dict[int, int] = {}
+        for n in nums:
+            nums_map[n] = 1 + nums_map.get(n, 0)
+        
+        cnt_nums = []
+        for value, count in nums_map.items():
+            cnt_nums.append([count, value])
+        cnt_nums.sort()
+        
+        results = []
+        for i in range(k):
+            count, value = cnt_nums.pop()
+            results.append(value)
+        return results
+```
+
+##### Solution 2: Bucket Sort: O(n)
+* Instead of a List that we need to sort, use bucket sort and build a List of Lists ahead of time
+* We know that at most we will have len(nums) + 1 indices, since the 0 index will be unused. If all the same number, we would have cnt of = n, where n is the length of the list.
+* Finally, we build a results array. We pop off the end of the list, since we are sorted in increasing order, so the most frequent are at the top of the list
+```python
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        # Need the + 1 because for a list we really dont use the 0 index
+        # Use the fact that the index implies the count of the objects!
+        # Ex: list of length 2, we will have one object twice, or two different objects once
+        # i.e. [7, 7] would be [[], [], [7]] and [6, 7] would be [[], [6, 7], []] 
+        freq = [[] for i in range(len(nums) + 1)]
+        count = {}
+        
+        for num in nums:
+            count[num] = 1 + count.get(num, 0)
+        for num, cnt in count.items():
+            freq[cnt].append(num)
+        
+        results = []
+        for i in range(len(freq) - 1, 0, -1):
+            # We skip over the empty indices, since we will not evaluate a num for an empty list
+            for num in freq[i]:
+                results.append(num)
+                if len(results) == k:
+                    return results
+```
