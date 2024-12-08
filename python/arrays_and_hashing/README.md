@@ -493,6 +493,7 @@ Output: [24,12,8,6]
 * We first traverse the array from left to right, for the i-th element we update results[i] with prefix, then update prefix for the next number by multiplying it by the current number.
 * Then, we traverse the array from right to left, for the i-th element, we update results[i] to results[i] * postifx, then update postfix by multiplying by the current number.
 * After the traversal, the array results is the answer.
+* Note: For better readability, could use prefix_results = [] and postfix_results = [] and return results = [prefix_results[i] * postfix_results[i] for i in range(len(nums))]
 ```python
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         # Time-Complexity: O(n+n) = O(2n) = O(n)
