@@ -5,6 +5,7 @@
 ### Difficulty: Medium
 * [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
 * [15. 3Sum](https://leetcode.com/problems/3sum)
+* [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted)
 
 ## LC Easy - Solution and Notes
 ### [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome)
@@ -185,4 +186,46 @@ Notice that the order of the output and the order of the triplets does not matte
                     while j < k and nums[j - 1] == nums[j]:
                         j += 1
         return triples
+```
+
+### [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted)
+#### Description
+<!-- description:start -->
+Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
+Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
+The tests are generated such that there is exactly one solution. You may not use the same element twice.
+Your solution must use only constant extra space.
+<!-- description:end -->
+
+#### Tags
+Arrays, Two Pointers, Binary Search
+
+#### Lists
+* Neetcode 150, LC Top Interview 150
+
+#### Example: 
+Input: numbers = [2,7,11,15], target = 9
+Output: [1,2]
+Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We return [1, 2].
+
+#### Approach
+##### Solution 1: One Pass using Two Pointers: O(n)
+* We need to use constant space, so we cannot use a datastructure like a hashmap.
+* But differing from Two Sum, the input array is sorted, so we can use that fact.
+* Use two pointers, updating the left ptr if the total_sum is too small and the right ptr is too large
+* Since this is a one-indexed array, need to add +1 to the indices
+```python
+        def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        # Time Complexity: O(n) since we will only iterate through the array once
+        # Space Complexity: O(1) since we are not using any extra space
+        l = 0
+        r = len(numbers) - 1
+        while l < r:
+            total_sum = numbers[l] + numbers[r]
+            if total_sum > target:
+                r -= 1
+            elif total_sum < target:
+                l += 1
+            else:
+                return [l + 1, r + 1]
 ```
