@@ -27,6 +27,9 @@ You can return the answer in any order.
 #### Tags
 Array, Hash Table
 
+#### Lists
+* Blind 75, Neetcode 150
+
 #### Example: 
 Input: nums = [2,7,11,15], target = 9
 Output: [0,1]
@@ -75,6 +78,9 @@ Given an integer array <code>nums</code> sorted in <strong>non-decreasing order<
 #### Tags
 Array, Two Pointers
 
+#### Lists
+* LC Top Interview 150
+
 #### Example: 
 Input: nums = [1,1,2]
 Output: 2, nums = [1,2,_]
@@ -111,6 +117,9 @@ Increment the large integer by one and return the resulting array of digits.
 #### Tags
 Array, Math
 
+#### Lists
+* LC Top Interview 150
+
 #### Example: 
 Input: digits = [1,2,3]
 Output: [1,2,4]
@@ -143,6 +152,9 @@ Given an integer array <code>nums</code>, return <code>true</code> if any value 
 
 #### Tags
 Array, Hash Table, Sorting
+
+#### Lists
+* Blind 75, Neetcode 150
 
 #### Example: 
 Input: nums = [1,2,3,1], Output: True
@@ -187,6 +199,9 @@ Given two strings s and t, return true if t is an anagram of s, and false otherw
 #### Tags
 Hash Table, String, Sorting
 
+#### Lists
+* Blind 75, Neetcode 150, LC Top Interview 150
+
 #### Example: 
 Input: s = "anagram", t = "nagaram", 
 Output: true
@@ -229,6 +244,9 @@ Note that multiple kids can have the greatest number of candies.
 #### Tags
 Array
 
+#### Lists
+* N/A
+
 #### Example: 
 Input: candies = [2,3,5,1,3], extraCandies = 3
 Output: [true,true,true,false,true] 
@@ -270,6 +288,9 @@ Note:
 
 #### Tags
 Array, Hash-Table, Matrix
+
+#### Lists
+* Neetcode 150, LC Top Interview 150
 
 #### Example: 
 Input: board = 
@@ -339,6 +360,9 @@ Given an array of strings strs, group the anagrams together. You can return the 
 #### Tags
 Array, Hash Table, Matrix
 
+#### Lists
+* Blind 75, Neetcode 150, LC Top Interview 150
+
 #### Example: 
 Input: strs = ["eat","tea","tan","ate","nat","bat"]
 Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
@@ -374,6 +398,9 @@ You must write an algorithm that runs in O(n) time.
 
 #### Tags
 Union Find, Array, Hash Table
+
+#### Lists
+* Blind 75, Neetcode 150, LC Top Interview 150
 
 #### Example: 
 Input: nums = [100,4,200,1,3,2]
@@ -432,6 +459,9 @@ You must write an algorithm that runs in O(n) time and without using the divisio
 
 #### Tags
 Array, Prefix Sum
+
+#### Lists
+* Blind 75, Neetcode 150, LC Top Interview 150
 
 #### Example: 
 Input: nums = [1,2,3,4]
@@ -518,6 +548,9 @@ Given an integer array nums and an integer k, return the k most frequent element
 
 #### Tags
 Array, Hash Table, Divide and Conquer, Bucket Sort, Counting, Quick Sort, Heap (Priority Queue)
+
+#### Lists
+* Blind 75, Neetcode 150
 
 #### Example: 
 Input: nums = [1,1,1,2,2,3], k = 2
