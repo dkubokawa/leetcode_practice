@@ -4,11 +4,11 @@ from python.arrays_and_hashing.easy.lc242e_valid_anagram import Solution as vali
 from python.arrays_and_hashing.easy.lc26e_remove_duplicates_from_sorted_array import (
     Solution as remove_duplicates_from_sorted_array
 )
-from python.arrays_and_hashing.easy.lc58e_length_of_last_word import Solution as length_of_last_word
+from python.string.easy.lc58e_length_of_last_word import Solution as length_of_last_word
 from python.arrays_and_hashing.medium.lc128m_longest_consecutive_sequence import (
     Solution as longest_consecutive_sequence,
 )
-from python.arrays_and_hashing.medium.lc1768e_merge_string_alternatively import (
+from python.string.easy.lc1768e_merge_string_alternatively import (
     Solution as merge_string,
 )
 from python.arrays_and_hashing.medium.lc238m_product_of_array_except_self import (
