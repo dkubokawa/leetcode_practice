@@ -6,9 +6,13 @@
 ### Difficulty: Medium
 * [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters)
 * [424. Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement)
+* [567. Permutation in String](https://leetcode.com/problems/permutation-in-string)
 * [1423. Maximum Points You Can Obtain from Cards](https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards)
 * [2461. Maximum Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k)
 
+### Difficulty: Hard
+* [76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring)
+* [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum)
 
 ## LC Easy - Solution and Notes
 ### [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock)
@@ -208,6 +212,62 @@ Explanation: Replace the two 'A's with two 'B's or vice versa.
         return max_len
 ```
 
+### [567. Permutation in String](https://leetcode.com/problems/permutation-in-string)
+#### Description
+<!-- description:start -->
+Given two strings s1 and s2, return true if s2 contains a
+permutation of s1, or false otherwise.
+In other words, return true if one of s1's permutations is the substring of s2.
+<!-- description:end -->
+
+#### Tags
+Hash Table, Two Pointers, String, Sliding Window
+
+#### Lists
+* Neetcode 150
+
+#### Example: 
+Input: s1 = "ab", s2 = "eidbaooo"
+Output: true
+Explanation: s2 contains one permutation of s1 ("ba").
+
+#### Approach
+##### Solution 1: Sliding Window: O(N)
+* Use a fixed-length sliding window to make a single pass through the array
+* Valid window condition: 
+  * when <code>(end - start + 1) == len(s1: </code> or when
+* We use a hashmap mapping the chars of s1 to counts
+  * Alt: could use Counter() or s1_count = [0] * 26 and place in the array using: s1_count[ord(s1[i]) - ord('a')] += 1
+* We use a sliding window a hashmap for the state of the window as we walk s2. 
+* Exit early if we find a match, otherwise, need to update the state on every iteration. Need to delete the key if cnt falls to 0.
+```python
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        # Fixed-Length Sliding Window
+        # Time-Complexity: O(n)
+        # Space-Complexity: O(2n) = O(n) because we use 2 hashmaps
+
+        if len(s1) > len(s2):
+            return False
+
+        char_s1 = {}
+        for value in s1:
+            char_s1[value] = 1 + char_s1.get(value, 0)
+        
+        start = 0
+        state = {}
+        for end in range(len(s2)):
+            state[s2[end]] = 1 + state.get(s2[end], 0)
+
+            if end - start + 1 == len(s1):
+                if state == char_s1:
+                    return True
+                state[s2[start]] -= 1
+                if state[s2[start]] == 0:
+                    del state[s2[start]]
+                start += 1
+        return False
+```
+
 ### [1423. Maximum Points You Can Obtain from Cards](https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards)
 #### Description
 <!-- description:start -->
@@ -297,7 +357,7 @@ We return 15 because it is the maximum subarray sum of all the subarrays that me
 * Use a fixed-length sliding window to make a single pass through the array
 * Valid Window condition: 
   * when <code>end - start + 1 == k</code> or when we have a subarray of length k
-* Can only update the max when 
+* Can only update the max when have distinct values in the state dict
 ```python
     def maximumSubarraySum(self, nums: List[int], k: int) -> int:
         # Fixed-Length Sliding Window
@@ -329,4 +389,177 @@ We return 15 because it is the maximum subarray sum of all the subarrays that me
                     del state[start_num]
                 start += 1
         return max_sum
+```
+
+## LC Hard - Solution and Notes
+### [76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring)
+#### Description
+<!-- description:start -->
+Given two strings s and t of lengths m and n respectively, return the minimum window
+substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string "".
+The testcases will be generated such that the answer is unique.
+<!-- description:end -->
+
+#### Tags
+Hash Table, String, Sliding Window
+
+#### Lists
+* Blind 75, Neetcode 150
+
+#### Example: 
+Input: s = "ADOBECODEBANC", t = "ABC"
+Output: "BANC"
+Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
+- 
+#### Approach
+##### Solution 1: Sliding Window: O(N)
+* Use a variable-length sliding window to make a single pass through the array
+* Check Window condition: 
+  * when <code>found == need</code> or we have a character match for the substr to the desired result
+* Can only update the max when the current window is less than the min_window
+* Otherwise, we update the state on every iteration
+```python
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        # Variable-Length Sliding Window
+        # Time-Complexity: O(n) where n is the length of s
+        # Space-Complexity: O(m) is the total number of unique characters in t or s, whichever is greater
+        if not s or not t:
+            return ""
+
+        # Use dictionary to track character frequencies
+        count_t = {}
+        for char in t:
+            count_t[char] = 1 + count_t.get(char, 0)
+        
+         # Result tracking vars
+        need = len(count_t)
+        found = 0
+        result_l_idx = None
+        result_r_idx = None
+        min_window = float('inf') # Need inf so any valid window is less than it
+
+        # Window variables
+        start = 0
+        state = {} 
+
+        for end in range(len(s)):
+            # Expand window
+            curr_char = s[end]
+            state[curr_char] = 1 + state.get(curr_char, 0)
+
+            # To check we have found all the chars in a window must have the same count
+            if curr_char in count_t and state[curr_char] == count_t[curr_char]:
+                found += 1
+            
+            # Once we have found chars == need chars, we have a valid window
+            while found == need:
+                start_char = s[start]
+                
+                # Update result if current window is smaller
+                if end - start + 1 < min_window:
+                    min_window = end - start + 1
+                    result_l_idx = start
+                    result_r_idx = end
+
+                # Contract window
+                state[start_char] -= 1
+                # Do not have a count match for the character anymore
+                if start_char in count_t and state[start_char] < count_t[start_char]:
+                    found -= 1
+                start += 1
+        
+        return "" if min_window == float('inf') else s[result_l_idx : result_r_idx + 1]
+```
+
+### [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum)
+#### Description
+<!-- description:start -->
+You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+Return the max sliding window.
+<!-- description:end -->
+
+#### Tags
+Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue
+
+#### Lists
+* Neetcode 150
+
+#### Example: 
+Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+Output: [3,3,5,5,6,7]
+Explanation: 
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+
+#### Approach
+##### Solution 1: Brute Force: O(N^2)
+* Can Brute Force by checking every substring and appending the results
+```python
+class Solution:
+    def maxSlidingWindow1(self, nums: List[int], k: int) -> List[int]:
+        # Brute-Force
+        # Time-Complexity: O(n^2)
+        # Space-Complexity: O(n)
+        results = []
+        for i in range(len(nums) - k + 1):
+            window_max = nums[i]
+            for j in range(i, i + k):
+                window_max = max(nums[j], window_max)
+            results.append(window_max)
+        return results
+```
+
+##### Solution 2: Sliding Window: O(N)
+* Use a fixed-length sliding window to make a single pass through the array
+* Valid Window condition: 
+  * when <code>end - start + 1 == k</code> 
+* Use a monotonically decreasing double-ended queue storing the indices to keep local max as we move
+* Monotonically decreasing because if for ex: [8 7 6 9], k = 3
+  * state =  max is at index 0 -> [8 7 6] <- need to check the tail to check monotonically decr 
+  * so if the currend number is GREATER then pop the queue 
+  * EX: end = 0, state = [0 1 2] because val [8 7 6] is valid monotonically decr 
+  * end = 1, state = [3] but we popped all the values since 9 >= [7 6] so no use holding them
+  * But if for example it was [8 7 6 5] we would have want to keep [7 6 5] since max is still at the left
+
+```python
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        # Fixed-Length Sliding Window
+        # Time-Complexity: O(n)
+        # Space-Complexity: O(n)
+        
+        state = deque()  # Monotonic deque to store indices of useful elements
+        start = 0
+        max_result = []  # To store the maximums of each window
+
+        for end in range(len(nums)):
+            # Extend window: Maintain the monotonic decreasing property in the deque
+            # Monotonically decreasing because if for ex: [8 7 6 9], k = 3 
+            # state =  max is at index 0 -> [8 7 6] <- need to check the tail to check monotonically decr
+            # so if the currend number is GREATER then pop the queue
+            # EX: end = 0, state = [0 1 2] because val [8 7 6] is valid monotonically decr
+            #     end = 1, state = [3] but we popped all the values since 9 >= [7 6] so no use holding them
+            while state and nums[state[-1]] <= nums[end]:
+                state.pop()
+            state.append(end)
+
+            # Remove elements not in the current window from the deque
+            # Since we stored the indices, we use this to check if its in window bounds
+            if state[0] < end - k + 1:
+                state.popleft()
+
+            # window length = k 
+            if end - start + 1 == k:
+                max_result.append(nums[state[0]])  # The front of the deque is the maximum
+                # Contract window
+                start += 1
+
+        return max_result
 ```
