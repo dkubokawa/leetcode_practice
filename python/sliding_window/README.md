@@ -6,6 +6,8 @@
 ### Difficulty: Medium
 * [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters)
 * [424. Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement)
+* [1423. Maximum Points You Can Obtain from Cards](https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards)
+* [2461. Maximum Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k)
 
 
 ## LC Easy - Solution and Notes
@@ -35,7 +37,7 @@ Note that buying on day 2 and selling on day 1 is not allowed because you must b
 
 ##### Solution 2: Sliding Window: O(N)
 * Use a Sliding Window / Pointer approach to make a single pass through the array.
-* Invalid Window:
+* Invalid Window condition:
   * Occurs when prices[end] < prices[start]
 ```python
     def maxProfit(self, prices: List[int]) -> int:
@@ -76,7 +78,7 @@ Note that with i = 1 and j = 0, the difference nums[j] - nums[i] = 7 - 1 = 6, bu
 #### Approach
 ##### Solution 1: Sliding Window: O(N)
 * Use a Sliding Window / Pointer approach to make a single pass through the array.
-* Invalid Window:
+* Invalid Window condition:
   * Occurs when nums[end] < nums[start]
 ```python
     def maximumDifference(self, nums: List[int]) -> int:
@@ -119,8 +121,8 @@ Explanation: The answer is "abc", with the length of 3.
 
 #### Approach
 ##### Solution 1: Sliding Window: O(N)
-* Use a variable-sliding window to make a single pass through the array
-* Invalid window: 
+* Use a variable-length window to make a single pass through the array
+* Invalid window condition: 
   * <code>seen</code> hashmap has a value with a count > 1. 
   * This can only occur at <code>end</code> because we update on every iteration
 * We fix the window by moving the index <code>start</code> past the duplicate value.
@@ -171,10 +173,10 @@ Explanation: Replace the two 'A's with two 'B's or vice versa.
 
 #### Approach
 ##### Solution 1: Sliding Window: O(N)
-* Use a variable-sliding window to make a single pass through the array
-* Invalid window: 
+* Use a variable-length sliding window to make a single pass through the array
+* Invalid window condition: 
   * when <code>(end - start + 1) - max_freq > k: </code> or when
-  * winow_len - max_freq > k (number of replacements allowed) we are invalid!
+  * window_len - max_freq > k (number of replacements allowed) we are invalid!
 * We fix the window by moving the index <code>start</code> to a valid index where we fulfill a valid window
 ```python
     def characterReplacement(self, s: str, k: int) -> int:
@@ -204,4 +206,127 @@ Explanation: Replace the two 'A's with two 'B's or vice versa.
             # in a valid window, so can update max_len
             max_len = max(max_len, end - start + 1)
         return max_len
+```
+
+### [1423. Maximum Points You Can Obtain from Cards](https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards)
+#### Description
+<!-- description:start -->
+There are several cards arranged in a row, and each card has an associated number of points. The points are given in the integer array cardPoints.
+In one step, you can take one card from the beginning or from the end of the row. You have to take exactly k cards.
+Your score is the sum of the points of the cards you have taken.
+Given the integer array cardPoints and the integer k, return the maximum score you can obtain.
+<!-- description:end -->
+
+#### Tags
+Array, Sliding Window, Prefix Sum
+
+#### Lists
+* N/A
+
+#### Example: 
+Input: cardPoints = [1,2,3,4,5,6,1], k = 3
+Output: 12
+Explanation: After the first step, your score will always be 1. However, choosing the rightmost card first will maximize your total score. 
+The optimal strategy is to take the three cards on the right, giving a final score of 1 + 6 + 5 = 12.
+
+#### Approach
+##### Solution 1: Sliding Window: O(N)
+* Use a fixed-length sliding window to make a single pass through the array
+* Valid Window condition: 
+  * when <code>end - start + 1 == n - k</code> or when
+  * window_len == number_of_discards (i.e. len(cardPoints) - cards_kept)
+* Once we have a valid window, update the max and fix the state/start
+* Corner case occurs when k >= n, since if we enter the algorithm we would get total_points = 0! Handle early. 
+```python
+    def maxScore(self, cardPoints: List[int], k: int) -> int:
+        # Trick here is we can "discard" n - k cards
+        # i.e. for cardPoints = [1,2,3,4,5,6,7], k = 3
+        # our valid hands are [1,2,3], [1,6,7], [1,2,7], [5,6,7]  
+        # so we discard a sliding window of length n - k = 4 cards
+        # Time-Complexity: O(N)
+        # Space-Complexity: O(1)
+
+        total = sum(cardPoints)
+        n = len(cardPoints)
+        if k >= n:
+            return total
+        
+        start = 0 
+        state = 0
+        max_window = 0
+        for end in range(n):
+            state += cardPoints[end]
+
+            if end - start + 1 == n - k:
+                max_window = max(max_window, total - state)
+                state -= cardPoints[start]
+                start += 1
+
+        return max_window
+```
+
+### [2461. Maximum Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k)
+#### Description
+<!-- description:start -->
+You are given an integer array nums and an integer k. Find the maximum subarray sum of all the subarrays of nums that meet the following conditions:
+* The length of the subarray is k, and
+* All the elements of the subarray are distinct.
+Return the maximum subarray sum of all the subarrays that meet the conditions. If no subarray meets the conditions, return 0.
+A subarray is a contiguous non-empty sequence of elements within an array.
+<!-- description:end -->
+
+#### Tags
+Array, Hash Table, Sliding Window
+
+#### Lists
+* N/A
+
+#### Example: 
+Input: nums = [1,5,4,2,9,9,9], k = 3
+Output: 15
+Explanation: The subarrays of nums with length 3 are:
+- [1,5,4] which meets the requirements and has a sum of 10.
+- [5,4,2] which meets the requirements and has a sum of 11.
+- [4,2,9] which meets the requirements and has a sum of 15.
+- [2,9,9] which does not meet the requirements because the element 9 is repeated.
+- [9,9,9] which does not meet the requirements because the element 9 is repeated.
+We return 15 because it is the maximum subarray sum of all the subarrays that meet the conditions
+- 
+#### Approach
+##### Solution 1: Sliding Window: O(N)
+* Use a fixed-length sliding window to make a single pass through the array
+* Valid Window condition: 
+  * when <code>end - start + 1 == k</code> or when we have a subarray of length k
+* Can only update the max when 
+```python
+    def maximumSubarraySum(self, nums: List[int], k: int) -> int:
+        # Fixed-Length Sliding Window
+        # Time: O(n) because we make a single pass
+        # Space: O(k) because we will store at most k-keys
+        state = {} # k,v -> num, cnt
+        start = 0
+        max_sum = 0
+        curr_sum = 0
+
+        for end in range(len(nums)):
+            # extend the window by adding nums[end]
+            curr_num = nums[end]
+            curr_sum += curr_num
+            state[curr_num] = 1 + state.get(curr_num, 0)
+
+            # Fill until we get a size subarray of length k
+            if end - start + 1 == k:
+
+                # only update max_sum if we have distinct values in our dict
+                if len(state) == k:
+                    max_sum = max(max_sum, curr_sum)
+
+                # contract the window by removing nums[start]
+                start_num = nums[start]
+                curr_sum -= start_num
+                state[start_num] -= 1
+                if state[start_num] == 0:
+                    del state[start_num]
+                start += 1
+        return max_sum
 ```

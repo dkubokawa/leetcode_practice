@@ -43,11 +43,10 @@ def fixed_length_sliding_window(nums, k):
 	 
         # window size = k
         if end - start + 1 == k:
-            # update max (might need an if-statement)
+            # if valid, update max 
             max_window = max(max_window, state)
 
-            # contract window by removing nums[start] from state in O(1) in time
-            # then update start
+            # contract window by removing nums[start] from state in O(1) in time and update start
             start += 1
 
     return max_window 
