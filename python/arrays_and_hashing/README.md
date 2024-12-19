@@ -1,4 +1,4 @@
-## LC Problems Solved
+## Arrays/Hashing LC Problems
 ### Difficulty: Easy
 * [001. Two Sum](https://leetcode.com/problems/two-sum)
 * [026. Remove Duplicates From Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array)
