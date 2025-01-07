@@ -1,3 +1,5 @@
+# LC1884M: Egg Drop with 2 Eggs and N Floors
+
 class Solution:
     def twoEggDrop(self, n: int) -> int:
         # Memoization dictionary to store results of subproblems for optimization
